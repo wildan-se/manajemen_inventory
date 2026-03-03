@@ -1,0 +1,20 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:8000",
+  "loginUser": "admin@mjmetal.co.id",
+  "loginPassword": "password",
+  "executionArgs": {
+    "projectName": "manajemen-inventori",
+    "projectPath": "C:\\Users\\Muhammad Wildan\\Desktop\\manajemen-inventori",
+    "testIds": [],
+    "additionalInstruction": "Use POST /api/login with JSON body {\"email\":\"admin@mjmetal.co.id\",\"password\":\"password\"} to get Bearer token. Store the token from the response. Include \"Authorization: Bearer <token>\" header on ALL subsequent API requests. Do NOT use web /login form, CSRF tokens, or session cookies. All endpoints return JSON. Test base URL is http://localhost:8000.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-MgAmKM57yzfa8A-HAF_AlzWdhhaF_2QX7_xWR188BJVrqEbEnoFWrtkA6VMZ80k6FPzN_JaN8hElmNGOhPTAAAPzz9z3QoQx1whdWPHyJf750KfiP5Ta_IdfkD0i2vj4F7k"
+    }
+  },
+  "serverPort": 54677,
+  "proxy": "http://b2442519-cde4-4246-b18e-d3f2215e8199:fey0MzkQmVbMkM0rEuh8jipOtVGBJw0g@tun.testsprite.com:8080"
+}

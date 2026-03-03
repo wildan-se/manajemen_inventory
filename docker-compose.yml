@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  # Aplikasi Utama (Laravel)
+  app:
+    # Membangun Container dari file `Dockerfile` kita
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Nama Kontainer
+    container_name: skbu_inventori_app
+    # Nyalakan Otomatis
+    restart: unless-stopped
+    # Akses Website kita di Port 8000
+    ports:
+      - "8000:80"
+    # Menghubungkan variabel lingkungan (Rahasia Database)
+    env_file:
+      - .env
+    # Agar Database berjalan dulu baru aplikasinya menyala
+    depends_on:
+      - db
+
+  # Database MySQL
+  db:
+    image: mysql:8.0
+    container_name: skbu_inventori_db
+    restart: always
+    # Pastikan user, pass, dan nama DB ini sama dengan di file `.env` Laravel Anda
+    environment:
+      MYSQL_DATABASE: "manajemen_inventory"
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes" # Membolehkan password root kosong (karena ini lingkungan dev/staging lokal)
+    ports:
+      # Port MySQL Standar
+      - "3307:3306"
+    volumes:
+      # Menyimpan Data Permanen! Supaya rekam jejak Inventory tidak hilang saat container dimatikan
+      - skbu_dbdata:/var/lib/mysql
+
+  # phpMyAdmin (Tools Visual untuk melihat-lihat Database MySQL)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: skbu_inventori_pma
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ""
+    ports:
+      # Bisa dibuka di browser: http://localhost:8080 (seperti XAMPP)
+      - "8080:80"
+    depends_on:
+      - db
+
+# Deklarasi Volume agar data database bisa abadi (Persisted Data)
+volumes:
+  skbu_dbdata:

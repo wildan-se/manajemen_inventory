@@ -1,0 +1,3146 @@
+[
+  {
+    "id": "TC001",
+    "title": "Dashboard shows all primary KPI cards and lists for an authenticated user",
+    "description": "Verifies the dashboard loads after login and displays all key stat cards plus low stock and recent movements sections.",
+    "category": "Dashboard Overview",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Total Items\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Low Stock\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Recent Stock Movements\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Dashboard Total Items count card is visible and labeled correctly",
+    "description": "Verifies the Total Items KPI card appears on the dashboard for an authenticated user.",
+    "category": "Dashboard Overview",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Total Items\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Dashboard Low Stock count card is visible and labeled correctly",
+    "description": "Verifies the Low Stock KPI card appears on the dashboard for an authenticated user.",
+    "category": "Dashboard Overview",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Low Stock\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Dashboard Active Work Orders count card is visible",
+    "description": "Verifies the Active Work Orders KPI card appears on the dashboard for an authenticated user.",
+    "category": "Dashboard Overview",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Active Work Orders\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Dashboard Low Stock alert list section is visible",
+    "description": "Verifies the Low Stock Alerts list section is present and visible on the dashboard.",
+    "category": "Dashboard Overview",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Low Stock Alerts\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Low stock alerts list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Dashboard Recent Stock Movements list section is visible",
+    "description": "Verifies the Recent Stock Movements list section is present and visible on the dashboard.",
+    "category": "Dashboard Overview",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Recent Stock Movements\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Recent stock movements list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Create a new category successfully from Categories list",
+    "description": "Verifies an authenticated user can create a new category and see it appear in the categories table.",
+    "category": "Category Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Categories table\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Category A\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Category created by automated UI test\" into the \"Description\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Simpan\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Category A\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Duplicate category name shows validation error on create",
+    "description": "Verifies the create category form blocks duplicate names and displays a visible validation error message.",
+    "category": "Category Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Category Duplicate\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Simpan\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Category Duplicate\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Simpan\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"already been taken\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Create category requires name field (required validation)",
+    "description": "Verifies the create category form enforces required name input and shows a visible error when empty.",
+    "category": "Category Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Simpan\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Cancel out of create category returns to list without creating",
+    "description": "Verifies a user can exit the create form using the cancel/back action and returns to categories list.",
+    "category": "Category Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Batal\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Categories table\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Edit category enforces required name when cleared",
+    "description": "Verifies the edit category form blocks saving when the name is cleared and shows a visible validation error.",
+    "category": "Category Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Tambah Kategori\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories/create\""
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Category Required Check\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Simpan\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Edit\" on the row for category \"E2E Category Required Check\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Edit\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Update\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Categories list page loads and shows core UI elements",
+    "description": "Verifies the categories index page is reachable after login and displays expected list controls.",
+    "category": "Category Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Categories\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/categories\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Kategori\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Tambah Kategori button\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Categories table\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Search items by code or name from Items list",
+    "description": "Verifies that the Items list supports searching by item code or name and displays matching results.",
+    "category": "Item Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Test\" into the item search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Items table/list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Filter items by category from Items list",
+    "description": "Verifies that selecting a category filter narrows the Items list to that category.",
+    "category": "Item Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"All\" from the category dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Items table/list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Filter items by Active status from Items list",
+    "description": "Verifies that the status filter can be set to Active and the list remains usable with results displayed.",
+    "category": "Item Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Active\" from the status dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Items table/list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Filter items by Inactive status from Items list",
+    "description": "Verifies that the status filter can be set to Inactive and the list updates accordingly (including empty state if no results).",
+    "category": "Item Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Inactive\" from the status dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Items table/list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Low stock badge visibility on Items list",
+    "description": "Verifies that items below minimum stock show a visible low stock indicator/badge on the Items list when present.",
+    "category": "Item Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Items table/list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Low stock badge/indicator\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Open Create Item form from Items list",
+    "description": "Verifies that the user can access the Create Item page from the Items list using the Tambah Item action.",
+    "category": "Item Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Items\" menu link"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Tambah Item\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/items/create\""
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Create a new supplier successfully and confirm it appears in the suppliers list",
+    "description": "Verifies an admin user can create a supplier via the create form and then see it listed on the suppliers index page.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/suppliers\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Submit supplier create form with valid data and return to list",
+    "description": "Verifies the supplier create form accepts valid inputs and returns the user to the suppliers list page after saving.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/suppliers/create\""
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Create supplier with required fields and verify the new supplier is visible in the list",
+    "description": "Verifies saving a supplier with required fields results in the new supplier name appearing on the suppliers list page.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Supplier E2E Test A\" into the \"Name\" field"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Finish supplier creation and verify success state on suppliers list",
+    "description": "Verifies the create supplier workflow completes, shows a visible success indication, and the created supplier is present on the list.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Supplier E2E Test B\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" or \"Create Supplier\" button"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Open supplier detail page from suppliers list and verify detail sections are visible",
+    "description": "Verifies a user can open a supplier detail page from the list and see supplier details and the recent purchase orders section.",
+    "category": "Supplier Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/suppliers\""
+      },
+      {
+        "type": "action",
+        "description": "Click the first supplier in the suppliers table/list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Recent Purchase Orders\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Supplier detail shows an empty-state when there are no recent purchase orders",
+    "description": "Verifies the supplier detail page shows a visible empty-state message/indicator when the supplier has no recent purchase orders.",
+    "category": "Supplier Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click a supplier that appears to have no purchase orders (no PO rows shown in list preview, if present)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Recent Purchase Orders\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No purchase orders\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Create supplier with invalid contact format and verify validation error is shown",
+    "description": "Verifies the create supplier form rejects an invalid contact format and displays a visible validation error without leaving the form.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Supplier Invalid Contact\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"not-a-phone-or-email\" into the \"Contact\" field"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Submit invalid contact and remain on create page with validation message",
+    "description": "Verifies submitting the supplier form with an invalid contact keeps the user on the create page and shows an error message.",
+    "category": "Supplier Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Supplier\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Supplier Invalid Contact 2\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"invalid@@@\" into the \"Contact\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" or \"Create Supplier\" button"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Suppliers list page renders and shows expected page heading/table",
+    "description": "Verifies the suppliers index page loads successfully for an authenticated user and displays key UI elements for the list.",
+    "category": "Supplier Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Suppliers\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/suppliers\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Suppliers\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Suppliers table/list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Create a new warehouse and verify it appears in the warehouse list",
+    "description": "Verifies an authenticated user can create a warehouse with name and location and then see it in the warehouses list.",
+    "category": "Warehouse Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Warehouses\" navigation link/menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/warehouses\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Warehouse\" button/link"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Submit warehouse create form with valid name and location",
+    "description": "Verifies the warehouse creation form accepts valid inputs and shows success result (redirect or confirmation).",
+    "category": "Warehouse Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Warehouses\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Warehouse\" button/link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/warehouses/create\""
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Complete warehouse creation end-to-end (fill fields, submit, verify in list)",
+    "description": "Verifies creating a warehouse end-to-end including form submission and confirming the new warehouse is visible in the list.",
+    "category": "Warehouse Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Warehouses\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Add Warehouse\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Warehouse QA Auto 01\" into the \"Name\" field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Location QA Auto\" into the \"Location\" field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" or \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Warehouse QA Auto 01\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Open a warehouse detail page and verify stock table is visible",
+    "description": "Verifies an authenticated user can open a warehouse details page and see the stock table section.",
+    "category": "Warehouse Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Warehouses\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first warehouse row/name in the warehouses list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/warehouses/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Stock\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Create Transfer stock movement successfully and view detail",
+    "description": "Verifies a user can create a Transfer movement with required fields and then see the generated reference on the detail page.",
+    "category": "Stock Movement",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/stock-movements\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Transfer form shows both Source and Destination warehouse fields after selecting type",
+    "description": "Verifies the Transfer movement type dynamically reveals both source and destination warehouse fields.",
+    "category": "Stock Movement",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Transfer\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Prevent Transfer submission when Source warehouse is missing",
+    "description": "Verifies validation prevents saving a Transfer when required Source warehouse is not provided.",
+    "category": "Stock Movement",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Transfer\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Prevent Transfer submission when Destination warehouse is missing",
+    "description": "Verifies validation prevents saving a Transfer when required Destination warehouse is not provided.",
+    "category": "Stock Movement",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Transfer\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC036",
+    "title": "Create Material Issue with quantity greater than available stock shows insufficient stock error",
+    "description": "Verifies Material Issue submission fails with a visible insufficient stock error when quantity exceeds available stock.",
+    "category": "Stock Movement",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Material Issue\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC037",
+    "title": "Material Issue form hides Destination warehouse field (only Source required)",
+    "description": "Verifies selecting Material Issue dynamically shows Source warehouse and does not require/show Destination warehouse.",
+    "category": "Stock Movement",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Material Issue\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC038",
+    "title": "Prevent submission when quantity is empty or zero",
+    "description": "Verifies the form blocks saving a movement when quantity is not provided or is zero.",
+    "category": "Stock Movement",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Stock Movement\" button/link"
+      },
+      {
+        "type": "action",
+        "description": "Select \"Transfer\" from the movement type dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC039",
+    "title": "View Stock Movement detail shows reference number and key fields",
+    "description": "Verifies a user can open a movement from the list and see a visible reference number and movement details on the detail page.",
+    "category": "Stock Movement",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Movements\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/stock-movements\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the first stock movement row in the list to open its detail"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Reference\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC040",
+    "title": "Create a new Purchase Order with dynamic line items and approve it",
+    "description": "Verifies a user can create a draft PO with multiple lines, see calculated totals, then approve it from the PO detail page.",
+    "category": "Purchase Order Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Purchase Orders\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Purchase Order\" button"
+      }
+    ]
+  },
+  {
+    "id": "TC041",
+    "title": "Create PO: add two line items and verify subtotal and grand total are visible before submit",
+    "description": "Verifies real-time calculation UI is shown for line subtotals and grand total when quantities and unit prices are entered.",
+    "category": "Purchase Order Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Purchase Orders\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Purchase Order\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select an option from the \"Supplier\" dropdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Grand Total\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC042",
+    "title": "Create PO successfully and verify it appears as Draft in detail/status badge",
+    "description": "Verifies submitting the create form results in a PO detail page showing a Draft status badge.",
+    "category": "Purchase Order Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Purchase Orders\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Purchase Order\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" or \"Create Purchase Order\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Status\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC043",
+    "title": "Approve a Draft PO from PO detail page",
+    "description": "Verifies clicking Approve changes the PO status from Draft to Approved on the detail page.",
+    "category": "Purchase Order Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Purchase Orders\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Click the first PO row in the list to open its detail page"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Approve\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Approved\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC044",
+    "title": "Create a new Work Order (WO) with input materials and output products",
+    "description": "Verifies an admin can create a production order by filling header fields and adding at least one input and one output line, then sees the WO detail page.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Production Order\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Create\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC045",
+    "title": "Create WO end-to-end: add input row and output row then submit",
+    "description": "Verifies the create WO form supports dynamically adding rows and successfully submits to create a new WO.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Production Order\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"WO UI Test\" into the Description field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Add Input Material\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Input Materials\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC046",
+    "title": "Remove dynamically added input and output rows before submitting",
+    "description": "Verifies the user can add and remove material/product rows on the create WO form without errors or broken UI.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Production Order\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Add Input Material\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Remove\" button for the newly added input material row"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Input Materials\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC047",
+    "title": "Create WO with missing required fields shows validation errors",
+    "description": "Verifies required field validation prevents WO creation and displays visible error feedback.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"New Production Order\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" or \"Create\" button on the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC048",
+    "title": "View Production Orders list and open an existing WO detail",
+    "description": "Verifies the production order list page loads and a user can open a WO detail to see status information.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/production-orders\""
+      },
+      {
+        "type": "action",
+        "description": "Click the first available \"View\" or WO row in the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Work Order\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC049",
+    "title": "Start production on a WO and see status change to In Progress",
+    "description": "Verifies starting production from the WO detail page updates the visible status and disables/replaces the Start action appropriately.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available \"View\" or WO row in the list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Production\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"In Progress\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC050",
+    "title": "Complete production on an In Progress WO and see status change to Completed",
+    "description": "Verifies completing production from the WO detail page updates the visible status to Completed.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available \"View\" or WO row in the list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Complete Production\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Completed\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC051",
+    "title": "Cancel a WO with confirmation",
+    "description": "Verifies canceling a work order prompts for confirmation and results in a visible canceled status.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available \"View\" or WO row in the list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cancel\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Confirm\" button in the cancel confirmation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Canceled\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC052",
+    "title": "Prevent starting production when materials are insufficient (error shown)",
+    "description": "Verifies the system blocks starting production when required input materials are not available and shows an insufficient stock message.",
+    "category": "Production Order (Work Order) Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Production Orders\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available \"View\" or WO row in the list that shows status \"Draft\" or shows a \"Start Production\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Start Production\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"insufficient\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC053",
+    "title": "Create stock opname session and verify items with system quantities are loaded",
+    "description": "Ensures a new stock opname session can be created and the item list with system quantities is displayed.",
+    "category": "Stock Opname",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create Stock Opname\" or \"Create\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Create Stock Opname\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the warehouse selection field is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC054",
+    "title": "Save physical counts and verify differences are displayed",
+    "description": "Verifies physical counts can be entered and saved, and the differences (system vs physical) are shown afterward.",
+    "category": "Stock Opname",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available opname session in the list to open its details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"System Quantity\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"10\" into the first item \"Physical Count\" input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save Physical Count\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Difference\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC055",
+    "title": "Complete opname after saving counts and verify status becomes completed",
+    "description": "Ensures an opname can be completed after counts are saved, and the UI reflects completed status.",
+    "category": "Stock Opname",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available opname session in the list to open its details"
+      },
+      {
+        "type": "action",
+        "description": "Type \"10\" into the first item \"Physical Count\" input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save Physical Count\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Complete Opname\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Completed\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC056",
+    "title": "Prevent completion when no physical counts have been saved",
+    "description": "Validates that the system blocks completing an opname if the user has not saved any physical counts.",
+    "category": "Stock Opname",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available opname session in the list to open its details"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Complete Opname\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Please save physical counts\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC057",
+    "title": "Cancel an opname session and verify it is marked canceled",
+    "description": "Ensures an in-progress opname session can be canceled and the UI indicates the canceled state.",
+    "category": "Stock Opname",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the first available opname session in the list to open its details"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cancel Opname\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Canceled\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC058",
+    "title": "Create new opname with required fields validation",
+    "description": "Verifies the create form requires warehouse and date before a session can be created.",
+    "category": "Stock Opname",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Stock Opnames\" navigation link/menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create Stock Opname\" or \"Create\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" or \"Save\" button on the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Warehouse is required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC059",
+    "title": "Stock Summary report loads and shows aggregated stock table",
+    "description": "Verifies the Stock Summary report page is accessible after login and displays an aggregated stock view.",
+    "category": "Reports",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Summary\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/stock-summary\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Stock Summary\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC060",
+    "title": "Stock Summary report: filter by warehouse updates results view",
+    "description": "Verifies filtering Stock Summary by a warehouse refreshes the visible results in the report table.",
+    "category": "Reports",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Stock Summary\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/stock-summary\""
+      },
+      {
+        "type": "action",
+        "description": "Select a specific warehouse (not \"All\") from the Warehouse dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC061",
+    "title": "Low Stock report loads and shows low-stock listing",
+    "description": "Verifies the Low Stock report page displays low stock items and includes deficit-related information.",
+    "category": "Reports",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Low Stock\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/low-stock\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Low Stock\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC062",
+    "title": "Low Stock report: warehouse filter scopes the results",
+    "description": "Verifies selecting a warehouse on Low Stock report scopes the visible list to that warehouse context.",
+    "category": "Reports",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Low Stock\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/low-stock\""
+      },
+      {
+        "type": "action",
+        "description": "Select a specific warehouse (not \"All\") from the Warehouse dropdown"
+      }
+    ]
+  },
+  {
+    "id": "TC063",
+    "title": "Movement History report loads and shows filter controls",
+    "description": "Verifies the Movement History report page is accessible and displays filters for item, type, and date range.",
+    "category": "Reports",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Movement History\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/movement-history\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Movement History\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC064",
+    "title": "Movement History report: invalid date range shows validation error",
+    "description": "Verifies the report blocks filtering when the end date is before the start date and shows a visible validation message.",
+    "category": "Reports",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Movement History\" report link in the Reports navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/reports/movement-history\""
+      },
+      {
+        "type": "action",
+        "description": "Type a start date that is later (e.g., \"2026-02-20\") into the Start Date field"
+      },
+      {
+        "type": "action",
+        "description": "Type an end date that is earlier (e.g., \"2026-02-10\") into the End Date field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"End date must be after start date\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC065",
+    "title": "Create a new user with role and active status (admin)",
+    "description": "Verifies an admin can create a user and see it appear in the user list with role/active indicators.",
+    "category": "User Management (Admin)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/users\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Users\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC066",
+    "title": "Create user form validation when submitted empty (admin)",
+    "description": "Verifies required-field validation messages appear when an admin submits the create user form without filling inputs.",
+    "category": "User Management (Admin)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      }
+    ]
+  },
+  {
+    "id": "TC067",
+    "title": "Create user fails with invalid email format (admin)",
+    "description": "Verifies the create user form blocks submission and shows validation when email format is invalid.",
+    "category": "User Management (Admin)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Create\" button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Test User Invalid Email\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"not-an-email\" into the email field"
+      }
+    ]
+  },
+  {
+    "id": "TC068",
+    "title": "Edit an existing user and update role (admin)",
+    "description": "Verifies an admin can open edit user screen, change role, and see updated role in the list.",
+    "category": "User Management (Admin)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit\" button for the first user in the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Edit User\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC069",
+    "title": "Delete a user (admin) with confirmation",
+    "description": "Verifies an admin can delete a user from the list after confirming the deletion.",
+    "category": "User Management (Admin)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Delete\" button for a user that is not the currently logged-in account"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Confirm\" button in the deletion confirmation"
+      }
+    ]
+  },
+  {
+    "id": "TC070",
+    "title": "Prevent deleting own account (admin safeguard)",
+    "description": "Verifies the system blocks an admin from deleting their own account and shows an error message.",
+    "category": "User Management (Admin)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Delete\" button for the user row matching the currently logged-in email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"cannot delete\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC071",
+    "title": "User list shows role badges and active status indicators",
+    "description": "Verifies the user list displays role badges and an active/inactive status indicator for users.",
+    "category": "User Management (Admin)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Users\" menu item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Role\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Active\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC072",
+    "title": "Non-admin cannot access Users page (403)",
+    "description": "Verifies a non-admin user is forbidden from accessing the admin-only Users page.",
+    "category": "User Management (Admin)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"nonadmin@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"WrongPassword123!\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Log in\" button"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /users"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"403\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Forbidden\" is visible"
+      }
+    ]
+  }
+]

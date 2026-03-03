@@ -1,0 +1,342 @@
+[
+    {
+        "id": "TC001",
+        "title": "POST /api/login with valid credentials returns token",
+        "description": "POST to /api/login with JSON body {\"email\":\"admin@mjmetal.co.id\",\"password\":\"password\"}. Expect HTTP 200, response JSON contains \"token\" field (non-empty string) and \"user\" object with \"email\" equal to admin@mjmetal.co.id."
+    },
+    {
+        "id": "TC002",
+        "title": "POST /api/login with invalid credentials returns 401",
+        "description": "POST to /api/login with JSON body {\"email\":\"admin@mjmetal.co.id\",\"password\":\"wrongpassword\"}. Expect HTTP 401 or 422 response. The response must NOT contain a \"token\" field."
+    },
+    {
+        "id": "TC003",
+        "title": "GET /api/me with valid Bearer token returns authenticated user",
+        "description": "First POST /api/login with {\"email\":\"admin@mjmetal.co.id\",\"password\":\"password\"} to get Bearer token. Then GET /api/me with Authorization: Bearer <token>. Expect HTTP 200 and JSON user object with field \"email\" equal to admin@mjmetal.co.id."
+    },
+    {
+        "id": "TC004",
+        "title": "GET /api/categories without token returns 401",
+        "description": "GET /api/categories with no Authorization header. Expect HTTP 401 response. This verifies all protected endpoints require authentication."
+    },
+    {
+        "id": "TC005",
+        "title": "GET /api/categories returns list of categories",
+        "description": "Login as admin@mjmetal.co.id / password and use the returned Bearer token. GET /api/categories with Authorization: Bearer <token>. Expect HTTP 200 and a JSON array. The array should contain at least one category object with \"id\" and \"name\" fields. Seeded data includes categories like 'Bahan Baku', 'Barang Jadi'."
+    },
+    {
+        "id": "TC006",
+        "title": "POST /api/categories creates a new category",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/categories with Authorization: Bearer <token> and JSON body {\"name\":\"Test Kategori API\",\"description\":\"Dibuat via API test\"}. Expect HTTP 201, response JSON contains \"id\" (integer) and \"name\" equal to \"Test Kategori API\"."
+    },
+    {
+        "id": "TC007",
+        "title": "PUT /api/categories/{id} updates an existing category",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/categories to create category with name \"Kategori Update Test\". Use the returned id. Then PUT /api/categories/{id} with JSON body {\"name\":\"Kategori Updated\",\"description\":\"Updated\"}. Expect HTTP 200 and response \"name\" equals \"Kategori Updated\"."
+    },
+    {
+        "id": "TC008",
+        "title": "DELETE /api/categories/{id} deletes a category",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/categories to create {\"name\":\"Kategori To Delete\"}. Use the returned id. Then DELETE /api/categories/{id} with Bearer token. Expect HTTP 200 with message \"Deleted\". Verify with GET /api/categories that the deleted category is no longer present."
+    },
+    {
+        "id": "TC009",
+        "title": "POST /api/categories with duplicate name returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/categories with {\"name\":\"Bahan Baku\"} (a name that already exists in seed data). Expect HTTP 422 validation error. The response should contain validation error about the name being already taken."
+    },
+    {
+        "id": "TC010",
+        "title": "POST /api/categories without required name field returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/categories with JSON body {\"description\":\"No name provided\"}. Expect HTTP 422 validation error with errors mentioning the \"name\" field is required."
+    },
+    {
+        "id": "TC011",
+        "title": "GET /api/units returns list of units",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/units with Authorization: Bearer <token>. Expect HTTP 200 and JSON array with unit objects containing \"id\", \"name\", \"abbreviation\". Seeded units include Kilogram (kg), Pieces (pcs), Liter (ltr)."
+    },
+    {
+        "id": "TC012",
+        "title": "POST /api/units creates a new unit",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/units with Authorization: Bearer <token> and JSON body {\"name\":\"Unit Test\",\"abbreviation\":\"ut\"}. Expect HTTP 201 and response JSON with \"id\" and \"name\" equal to \"Unit Test\"."
+    },
+    {
+        "id": "TC013",
+        "title": "POST /api/units with duplicate name returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/units with JSON body {\"name\":\"Kilogram\",\"abbreviation\":\"kg\"} (name that already exists in seed data). Expect HTTP 422 validation error about duplicate name."
+    },
+    {
+        "id": "TC014",
+        "title": "GET /api/suppliers returns list of suppliers",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/suppliers with Authorization: Bearer <token>. Expect HTTP 200 and JSON array. Seeded suppliers include PT Indo Baja Steel (SUP-001). Each supplier object should have \"id\", \"code\", \"name\" fields."
+    },
+    {
+        "id": "TC015",
+        "title": "POST /api/suppliers creates a new supplier",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/suppliers with JSON body {\"code\":\"SUP-TEST\",\"name\":\"Supplier Test API\",\"email\":\"test@supplier.com\",\"phone\":\"021-999999\",\"address\":\"Test Address\",\"contact_person\":\"Test Person\"}. Expect HTTP 201. Response should contain \"id\" and \"code\" equal to \"SUP-TEST\"."
+    },
+    {
+        "id": "TC016",
+        "title": "GET /api/suppliers/{id} returns supplier detail",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/suppliers/1 (first seeded supplier). Expect HTTP 200 with JSON object containing \"id\" equal to 1 and \"code\" equal to \"SUP-001\"."
+    },
+    {
+        "id": "TC017",
+        "title": "PUT /api/suppliers/{id} updates supplier details",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/suppliers to create {\"code\":\"SUP-UPD\",\"name\":\"Supplier Update\",\"email\":\"upd@test.com\",\"phone\":\"021-100\",\"address\":\"Addr\",\"contact_person\":\"Person\"}. Use returned id. PUT /api/suppliers/{id} with body {\"code\":\"SUP-UPD\",\"name\":\"Supplier Updated Name\",\"email\":\"updated@test.com\",\"phone\":\"021-111\",\"address\":\"New Addr\",\"contact_person\":\"New Person\"}. Expect HTTP 200 and response \"name\" equals \"Supplier Updated Name\"."
+    },
+    {
+        "id": "TC018",
+        "title": "POST /api/suppliers with duplicate code returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/suppliers with {\"code\":\"SUP-001\",\"name\":\"Duplicate Supplier\"} (code already in seed data). Expect HTTP 422 validation error about duplicate supplier code."
+    },
+    {
+        "id": "TC019",
+        "title": "GET /api/warehouses returns list with locations",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/warehouses. Expect HTTP 200 and JSON array. Each warehouse should have \"id\", \"code\", \"name\" and a nested \"locations\" array. Seeded warehouses include WH-BB (Gudang Bahan Baku), WH-PROD, WH-BJ."
+    },
+    {
+        "id": "TC020",
+        "title": "POST /api/warehouses creates a new warehouse",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/warehouses with JSON body {\"code\":\"WH-TEST\",\"name\":\"Gudang Test\",\"address\":\"Jl. Test No. 1\"}. Expect HTTP 201. Response should contain \"id\" and \"code\" equal to \"WH-TEST\"."
+    },
+    {
+        "id": "TC021",
+        "title": "POST /api/warehouses with duplicate code returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/warehouses with {\"code\":\"WH-BB\",\"name\":\"Duplicate Warehouse\"} (code already in seed data). Expect HTTP 422 validation error about duplicate warehouse code."
+    },
+    {
+        "id": "TC022",
+        "title": "GET /api/items returns paginated item list",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/items. Expect HTTP 200 and JSON pagination object with \"data\" array. Each item in data should have \"id\", \"code\", \"name\" and nested \"category\" and \"unit\" objects. Seeded items include BB-001 (Besi Hollow 40x40x2mm)."
+    },
+    {
+        "id": "TC023",
+        "title": "POST /api/items creates a new inventory item",
+        "description": "Login as admin@mjmetal.co.id / password. First GET /api/categories to get a valid category_id (e.g., first item's id). Get unit_id from GET /api/units. Then POST /api/items with {\"code\":\"TEST-001\",\"name\":\"Item Test API\",\"category_id\":<valid_id>,\"unit_id\":<valid_id>,\"min_stock\":10,\"max_stock\":100}. Expect HTTP 201. Response has \"id\", \"code\" equal to \"TEST-001\", nested \"category\" and \"unit\" objects."
+    },
+    {
+        "id": "TC024",
+        "title": "GET /api/items/{id} returns item detail with stocks",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/items/1 (first seeded item). Expect HTTP 200. Response should have \"id\" equal to 1, \"code\" equal to \"BB-001\" and a nested \"stocks\" array showing stock quantities per warehouse."
+    },
+    {
+        "id": "TC025",
+        "title": "PUT /api/items/{id} updates item details",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/items to create item with code \"ITEM-UPD\", valid category_id and unit_id from the API. Then PUT /api/items/{id} with {\"code\":\"ITEM-UPD\",\"name\":\"Item Updated Name\",\"category_id\":<same>,\"unit_id\":<same>,\"min_stock\":20}. Expect HTTP 200 and response \"name\" equals \"Item Updated Name\"."
+    },
+    {
+        "id": "TC026",
+        "title": "POST /api/items with invalid category_id returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/units to get a valid unit_id. POST /api/items with {\"code\":\"ITEM-BADCAT\",\"name\":\"Bad Category Item\",\"category_id\":99999,\"unit_id\":<valid_id>}. Expect HTTP 422 validation error due to non-existent category_id (invalid foreign key)."
+    },
+    {
+        "id": "TC027",
+        "title": "POST /api/items with duplicate code returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/items with {\"code\":\"BB-001\",\"name\":\"Duplicate Item\"} (code already in seed data). Expect HTTP 422 validation error about duplicate item code."
+    },
+    {
+        "id": "TC028",
+        "title": "POST /api/items missing required fields returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/items with empty body {}. Expect HTTP 422 validation errors. The error response should include validation messages for required fields: \"code\", \"name\", \"category_id\", \"unit_id\"."
+    },
+    {
+        "id": "TC029",
+        "title": "GET /api/stocks returns current stock levels",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/stocks. Expect HTTP 200 and JSON array. Each stock record has \"id\", \"item_id\", \"warehouse_id\", \"quantity\" fields and nested \"item\" and \"warehouse\" objects. Array should be non-empty (seeded data exists)."
+    },
+    {
+        "id": "TC030",
+        "title": "GET /api/stock-movements returns movement history",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/stock-movements. Expect HTTP 200 and JSON pagination object with \"data\" array. Each movement has \"id\", \"type\", \"quantity\", \"item_id\" fields. Seeded database has 34 stock movements."
+    },
+    {
+        "id": "TC031",
+        "title": "POST goods_receipt movement increases stock quantity",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/stocks?warehouse_id=1&item_id=1 to record the current quantity of item id=1 in warehouse id=1. Then POST /api/stock-movements with {\"type\":\"goods_receipt\",\"item_id\":1,\"to_warehouse_id\":1,\"quantity\":50,\"reference_number\":\"GR-TEST-001\"}. Expect HTTP 201. Response has \"type\" equal to \"goods_receipt\". Then GET /api/stocks?warehouse_id=1&item_id=1 and verify new quantity is previous_quantity + 50."
+    },
+    {
+        "id": "TC032",
+        "title": "POST material_issue movement decreases stock quantity",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/stock-movements with {\"type\":\"goods_receipt\",\"item_id\":1,\"to_warehouse_id\":1,\"quantity\":100} to ensure stock exists. Then GET /api/stocks?warehouse_id=1&item_id=1 to record current quantity. POST /api/stock-movements with {\"type\":\"material_issue\",\"item_id\":1,\"from_warehouse_id\":1,\"quantity\":20,\"reference_number\":\"MI-TEST-001\"}. Expect HTTP 201. Verify GET /api/stocks?warehouse_id=1&item_id=1 shows quantity decreased by 20."
+    },
+    {
+        "id": "TC033",
+        "title": "Stock quantity correctness after goods_receipt then material_issue sequence",
+        "description": "Login as admin@mjmetal.co.id / password. 1) POST goods_receipt: {\"type\":\"goods_receipt\",\"item_id\":2,\"to_warehouse_id\":1,\"quantity\":200}. 2) POST material_issue: {\"type\":\"material_issue\",\"item_id\":2,\"from_warehouse_id\":1,\"quantity\":30}. 3) GET /api/stocks?item_id=2&warehouse_id=1. Verify the stock record quantity for item 2 in warehouse 1 reflects net change of +200-30 from these two operations. Also GET /api/reports/stock-summary and verify item with code \"BB-002\" has total_qty > 0."
+    },
+    {
+        "id": "TC034",
+        "title": "POST stock_movement with invalid type returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/stock-movements with {\"type\":\"invalid_type\",\"item_id\":1,\"to_warehouse_id\":1,\"quantity\":10}. Expect HTTP 422 validation error. The error should reference the \"type\" field for invalid enum value."
+    },
+    {
+        "id": "TC035",
+        "title": "POST stock_movement without required item_id returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/stock-movements with {\"type\":\"goods_receipt\",\"to_warehouse_id\":1,\"quantity\":10} (missing item_id). Expect HTTP 422 validation with error on \"item_id\" field."
+    },
+    {
+        "id": "TC036",
+        "title": "POST /api/purchase-orders creates PO in draft status",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/purchase-orders with {\"po_number\":\"PO-TEST-001\",\"supplier_id\":1,\"warehouse_id\":1,\"expected_date\":\"2026-03-30\",\"items\":[{\"item_id\":1,\"quantity\":50,\"unit_price\":15000}]}. Expect HTTP 201. Response has \"id\", \"po_number\" equal to \"PO-TEST-001\", \"status\" equal to \"draft\", nested \"supplier\" and \"items\" arrays."
+    },
+    {
+        "id": "TC037",
+        "title": "GET /api/purchase-orders lists all purchase orders",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/purchase-orders. Expect HTTP 200 and JSON pagination with \"data\" array. Seeded database has purchase orders. Each PO object has \"id\", \"po_number\", \"status\", \"supplier\" nested object."
+    },
+    {
+        "id": "TC038",
+        "title": "GET /api/purchase-orders/{id} returns PO detail",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/purchase-orders/1. Expect HTTP 200 with a PO detail object containing \"id\" equal to 1, \"status\", nested \"supplier\", \"warehouse\", \"items\" array with \"item\" sub-objects."
+    },
+    {
+        "id": "TC039",
+        "title": "PO lifecycle: draft then approve changes status to approved",
+        "description": "Login as admin@mjmetal.co.id / password. 1) POST /api/purchase-orders with po_number \"PO-APPROVE-TEST\", supplier_id=1, warehouse_id=1, expected_date=\"2026-03-30\", items=[{\"item_id\":1,\"quantity\":10,\"unit_price\":5000}]. Record the returned id. 2) POST /api/purchase-orders/{id}/approve with Bearer token. Expect HTTP 200. Response \"status\" equals \"approved\"."
+    },
+    {
+        "id": "TC040",
+        "title": "PO lifecycle: approve then receive records quantities and increases stock",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Create PO: POST /api/purchase-orders po_number=\"PO-RECV-TEST\", supplier_id=1, warehouse_id=1, expected_date=\"2026-03-30\", items=[{\"item_id\":3,\"quantity\":100,\"unit_price\":50000}]. 2) POST /api/purchase-orders/{id}/approve. 3) GET /api/purchase-orders/{id} to get purchase_order_item id from items array. 4) GET /api/stocks?item_id=3&warehouse_id=1 to record stock_before. 5) POST /api/purchase-orders/{id}/receive with {\"items\":[{\"purchase_order_item_id\":<poi_id>,\"received_quantity\":100}]}. Expect HTTP 200. 6) GET /api/stocks?item_id=3&warehouse_id=1. Verify quantity >= stock_before + 100."
+    },
+    {
+        "id": "TC041",
+        "title": "PO lifecycle: cancel changes status to cancelled",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/purchase-orders with po_number=\"PO-CANCEL-TEST\", supplier_id=1, warehouse_id=1, expected_date=\"2026-03-30\", items=[{\"item_id\":1,\"quantity\":5,\"unit_price\":1000}]. Record returned id. POST /api/purchase-orders/{id}/cancel. Expect HTTP 200 and response \"status\" equals \"cancelled\"."
+    },
+    {
+        "id": "TC042",
+        "title": "POST approve on already-approved PO returns error",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Create PO po_number=\"PO-DBLAPP-TEST\", supplier_id=1, warehouse_id=1, expected_date=\"2026-03-30\", items=[{\"item_id\":1,\"quantity\":5,\"unit_price\":1000}]. 2) POST approve. 3) POST approve again. Expect HTTP 4xx (400, 422, or 500) error with message indicating PO is not in draft status and cannot be approved again."
+    },
+    {
+        "id": "TC043",
+        "title": "POST /api/purchase-orders missing required fields returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/purchase-orders with empty body {}. Expect HTTP 422 validation errors mentioning required fields: po_number, supplier_id, warehouse_id, expected_date, items."
+    },
+    {
+        "id": "TC044",
+        "title": "POST /api/production-orders creates WO in draft status",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/production-orders with {\"wo_number\":\"WO-TEST-001\",\"title\":\"Test Production Order\",\"warehouse_id\":1,\"planned_start\":\"2026-03-01\",\"planned_end\":\"2026-03-10\",\"inputs\":[{\"item_id\":1,\"quantity\":50},{\"item_id\":2,\"quantity\":20}],\"outputs\":[{\"item_id\":13,\"quantity\":10}]}. Expect HTTP 201. Response \"status\" equals \"draft\", has nested \"inputs\" and \"outputs\" arrays with item details."
+    },
+    {
+        "id": "TC045",
+        "title": "GET /api/production-orders lists all work orders",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/production-orders. Expect HTTP 200 and JSON pagination with \"data\" array. Seeded database has production orders. Each WO has \"id\", \"wo_number\", \"status\" fields."
+    },
+    {
+        "id": "TC046",
+        "title": "GET /api/production-orders/{id} returns WO detail with inputs and outputs",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/production-orders/1. Expect HTTP 200 with object containing \"id\" equal to 1, \"status\", nested \"warehouse\", \"inputs\" and \"outputs\" arrays, each with \"item\" sub-objects."
+    },
+    {
+        "id": "TC047",
+        "title": "WO lifecycle: start changes status to in_progress",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Ensure stock for inputs: POST goods_receipt {\"type\":\"goods_receipt\",\"item_id\":1,\"to_warehouse_id\":1,\"quantity\":500}. Also POST goods_receipt {\"type\":\"goods_receipt\",\"item_id\":2,\"to_warehouse_id\":1,\"quantity\":500}. 2) Create WO: POST /api/production-orders wo_number=\"WO-START-TEST\", title=\"Start Test\", warehouse_id=1, planned_start=\"2026-03-01\", planned_end=\"2026-03-10\", inputs=[{\"item_id\":1,\"quantity\":5},{\"item_id\":2,\"quantity\":5}], outputs=[{\"item_id\":13,\"quantity\":1}]. 3) POST /api/production-orders/{id}/start. Expect HTTP 200. Response \"status\" equals \"in_progress\"."
+    },
+    {
+        "id": "TC048",
+        "title": "WO lifecycle: start then complete changes status to completed",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Ensure stock: POST goods_receipt item_id=3, warehouse_id=1, quantity=1000. 2) Create WO: wo_number=\"WO-COMP-TEST\", title=\"Complete Test\", warehouse_id=1, planned_start=\"2026-03-01\", planned_end=\"2026-03-15\", inputs=[{\"item_id\":3,\"quantity\":10}], outputs=[{\"item_id\":14,\"quantity\":1}]. 3) POST start. 4) POST /api/production-orders/{id}/complete. Expect HTTP 200. Response \"status\" equals \"completed\"."
+    },
+    {
+        "id": "TC049",
+        "title": "WO lifecycle: cancel changes status to cancelled",
+        "description": "Login as admin@mjmetal.co.id / password. Create WO: wo_number=\"WO-CNCL-TEST\", title=\"Cancel Test\", warehouse_id=1, planned_start=\"2026-03-01\", planned_end=\"2026-03-10\". POST /api/production-orders/{id}/cancel. Expect HTTP 200. Response \"status\" equals \"cancelled\"."
+    },
+    {
+        "id": "TC050",
+        "title": "POST /api/production-orders with planned_end before planned_start returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/production-orders with {\"wo_number\":\"WO-BADDATE\",\"title\":\"Bad Date WO\",\"warehouse_id\":1,\"planned_start\":\"2026-03-10\",\"planned_end\":\"2026-03-01\"}. Expect HTTP 422 validation error because planned_end is before planned_start."
+    },
+    {
+        "id": "TC051",
+        "title": "POST start on completed WO returns error",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Ensure stock: POST goods_receipt item_id=4, warehouse_id=1, quantity=500. 2) Create WO wo_number=\"WO-DONE-TEST\", warehouse_id=1, planned_start=\"2026-03-01\", planned_end=\"2026-03-15\", inputs=[{\"item_id\":4,\"quantity\":5}], outputs=[{\"item_id\":14,\"quantity\":1}]. 3) POST start. 4) POST complete. 5) POST /api/production-orders/{id}/start again. Expect HTTP 4xx error because WO is already completed and cannot be started again."
+    },
+    {
+        "id": "TC052",
+        "title": "POST /api/stock-opnames creates opname in draft status",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/stock-opnames with {\"opname_number\":\"OP-TEST-001\",\"warehouse_id\":1,\"counted_at\":\"2026-02-27\",\"notes\":\"API test opname\"}. Expect HTTP 201. Response \"warehouse_id\" equals 1 and status is not completed."
+    },
+    {
+        "id": "TC053",
+        "title": "POST load-stock populates opname with warehouse items",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Create opname: POST /api/stock-opnames {\"opname_number\":\"OP-LOAD-001\",\"warehouse_id\":1,\"counted_at\":\"2026-02-27\"}. 2) POST /api/stock-opnames/{id}/load-stock. Expect HTTP 200. Response nested \"items\" array should be non-empty — populated from stock in warehouse 1. Each item in the array should have \"item_id\" and \"system_quantity\"."
+    },
+    {
+        "id": "TC054",
+        "title": "POST save-count stores counted quantities",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Create opname opname_number=\"OP-SAVE-001\", warehouse_id=1, counted_at=\"2026-02-27\". 2) POST load-stock. 3) From load-stock response items array, get the first item's item_id. 4) POST /api/stock-opnames/{id}/save-count with {\"counts\":{\"<item_id>\":99}}. Expect HTTP 200. Response items array should contain counted_quantity equal to 99 for that item_id."
+    },
+    {
+        "id": "TC055",
+        "title": "POST complete closes opname and applies stock adjustments",
+        "description": "Login as admin@mjmetal.co.id / password. 1) Create opname opname_number=\"OP-COMP-001\", warehouse_id=1, counted_at=\"2026-02-27\". 2) POST load-stock. 3) Get item_id from first loaded item. 4) POST save-count {\"counts\":{\"<item_id>\":150}}. 5) POST /api/stock-opnames/{id}/complete. Expect HTTP 200. Response \"status\" equals \"completed\". GET /api/stock-movements?type=stock_adjustment to verify an adjustment movement was created."
+    },
+    {
+        "id": "TC056",
+        "title": "POST cancel changes opname status to cancelled",
+        "description": "Login as admin@mjmetal.co.id / password. Create opname opname_number=\"OP-CNCL-001\", warehouse_id=1, counted_at=\"2026-02-27\". POST /api/stock-opnames/{id}/cancel. Expect HTTP 200 and response \"status\" equals \"cancelled\"."
+    },
+    {
+        "id": "TC057",
+        "title": "GET /api/reports/stock-summary returns all items with total quantities",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/reports/stock-summary. Expect HTTP 200 and JSON array. Each item has \"id\", \"code\", \"name\", \"total_qty\" (number or null), nested \"category\" and \"unit\". The array count should be >= 16 (seeded items). At least one item should have total_qty > 0."
+    },
+    {
+        "id": "TC058",
+        "title": "GET /api/reports/low-stock returns items below minimum stock",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/reports/low-stock. Expect HTTP 200 and JSON array. Each returned item should have \"min_stock\" set and \"total_qty\" less than \"min_stock\" (COALESCE(total_qty, 0) < min_stock). Verify structure with \"id\", \"code\", \"min_stock\", \"total_qty\"."
+    },
+    {
+        "id": "TC059",
+        "title": "GET /api/reports/movement-history with type filter returns filtered results",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/reports/movement-history?type=goods_receipt. Expect HTTP 200 and JSON pagination with \"data\" array. All items in data should have \"type\" equal to \"goods_receipt\". Verify at least one result exists in seeded data."
+    },
+    {
+        "id": "TC060",
+        "title": "GET /api/users with admin token returns user list",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/users with Authorization: Bearer <admin_token>. Expect HTTP 200 and JSON array of users. Each user has \"id\", \"name\", \"email\", \"role\". The array should have at least 5 users (seeded). Verify admin@mjmetal.co.id appears in the list."
+    },
+    {
+        "id": "TC061",
+        "title": "POST /api/users creates a new user (admin only)",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/users with {\"name\":\"Test User API\",\"email\":\"testuser@mjmetal.co.id\",\"password\":\"password123\",\"role\":\"warehouse_operator\"}. Expect HTTP 201. Response has \"id\", \"name\" equal to \"Test User API\", \"role\" equal to \"warehouse_operator\". Password field should not appear in response."
+    },
+    {
+        "id": "TC062",
+        "title": "PUT /api/users/{id} updates user details (admin only)",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/users to create user with email \"updatetest@mjmetal.co.id\", name=\"Update Test\", password=\"password123\", role=\"warehouse_operator\". Use returned id. PUT /api/users/{id} with {\"name\":\"Updated Name\",\"email\":\"updatetest@mjmetal.co.id\",\"role\":\"supervisor\"}. Expect HTTP 200 and response \"name\" equals \"Updated Name\", \"role\" equals \"supervisor\"."
+    },
+    {
+        "id": "TC063",
+        "title": "DELETE /api/users/{id} deletes a user (admin only)",
+        "description": "Login as admin@mjmetal.co.id / password. First POST /api/users to create user email=\"todelete@mjmetal.co.id\", name=\"To Delete\", password=\"password123\", role=\"warehouse_operator\". Use returned id. DELETE /api/users/{id}. Expect HTTP 200 with response message \"Deleted\"."
+    },
+    {
+        "id": "TC064",
+        "title": "DELETE own admin account returns 422 cannot delete self",
+        "description": "Login as admin@mjmetal.co.id / password. GET /api/me to get the current admin user id. DELETE /api/users/{own_id} with Bearer token. Expect HTTP 422. Response message should indicate cannot delete yourself."
+    },
+    {
+        "id": "TC065",
+        "title": "GET /api/users with non-admin token returns 403 Forbidden",
+        "description": "Login as inventory@mjmetal.co.id / password (role: inventory_controller, not admin). Use the returned Bearer token. GET /api/users with Authorization: Bearer <inventory_token>. Expect HTTP 403 Forbidden. Non-admin roles are blocked from user management endpoints."
+    },
+    {
+        "id": "TC066",
+        "title": "POST /api/users with non-admin token returns 403 Forbidden",
+        "description": "Login as gudang@mjmetal.co.id / password (role: warehouse_operator, not admin). Use the returned Bearer token. POST /api/users with body {\"name\":\"Unauthorized\",\"email\":\"unauth@test.com\",\"password\":\"password123\",\"role\":\"warehouse_operator\"}. Expect HTTP 403 Forbidden response."
+    },
+    {
+        "id": "TC067",
+        "title": "POST /api/users with duplicate email returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/users with {\"name\":\"Dup Email\",\"email\":\"admin@mjmetal.co.id\",\"password\":\"password123\",\"role\":\"warehouse_operator\"} (email already exists in seed data). Expect HTTP 422 validation error about duplicate email address."
+    },
+    {
+        "id": "TC068",
+        "title": "POST /api/users with invalid role value returns 422",
+        "description": "Login as admin@mjmetal.co.id / password. POST /api/users with {\"name\":\"Bad Role\",\"email\":\"badrole@mjmetal.co.id\",\"password\":\"password123\",\"role\":\"superadmin\"} (role not in allowed values: admin, inventory_controller, warehouse_operator, supervisor, production_staff). Expect HTTP 422 validation error about invalid role value."
+    }
+]

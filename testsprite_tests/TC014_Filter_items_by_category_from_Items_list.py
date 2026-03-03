@@ -1,0 +1,83 @@
+import asyncio
+from playwright import async_api
+from playwright.async_api import expect
+
+async def run_test():
+    pw = None
+    browser = None
+    context = None
+
+    try:
+        # Start a Playwright session in asynchronous mode
+        pw = await async_api.async_playwright().start()
+
+        # Launch a Chromium browser in headless mode with custom arguments
+        browser = await pw.chromium.launch(
+            headless=True,
+            args=[
+                "--window-size=1280,720",         # Set the browser window size
+                "--disable-dev-shm-usage",        # Avoid using /dev/shm which can cause issues in containers
+                "--ipc=host",                     # Use host-level IPC for better stability
+                "--single-process"                # Run the browser in a single process mode
+            ],
+        )
+
+        # Create a new browser context (like an incognito window)
+        context = await browser.new_context()
+        context.set_default_timeout(5000)
+
+        # Open a new page in the browser context
+        page = await context.new_page()
+
+        # Interact with the page elements to simulate user flow
+        # -> Navigate to http://localhost:8000
+        await page.goto("http://localhost:8000", wait_until="commit", timeout=10000)
+        
+        # -> Type the username into the email field (index 64) and the password into the password field (index 74), then click the 'Log in' button (index 95).
+        frame = context.pages[-1]
+        # Input text
+        elem = frame.locator('xpath=/html/body/div/div[2]/form/div/input').nth(0)
+        await page.wait_for_timeout(3000); await elem.fill('admin@mjmetal.co.id')
+        
+        frame = context.pages[-1]
+        # Input text
+        elem = frame.locator('xpath=/html/body/div/div[2]/form/div[2]/input').nth(0)
+        await page.wait_for_timeout(3000); await elem.fill('password')
+        
+        frame = context.pages[-1]
+        # Click element
+        elem = frame.locator('xpath=/html/body/div/div[2]/form/div[4]/button').nth(0)
+        await page.wait_for_timeout(3000); await elem.click(timeout=5000)
+        
+        # -> Click the 'Items / Material' menu link in the sidebar to open the Items page (use interactive element index 611).
+        frame = context.pages[-1]
+        # Click element
+        elem = frame.locator('xpath=/html/body/div/aside/nav/div/a').nth(0)
+        await page.wait_for_timeout(3000); await elem.click(timeout=5000)
+        
+        # -> Select the 'Bahan Baku' option from the 'Kategori' dropdown (index 1396) and click the 'Filter' button (index 1412) to apply the category filter.
+        frame = context.pages[-1]
+        # Click element
+        elem = frame.locator('xpath=/html/body/div/div/main/div[2]/form/button').nth(0)
+        await page.wait_for_timeout(3000); await elem.click(timeout=5000)
+        
+        # --> Assertions to verify final state
+        frame = context.pages[-1]
+        frame = context.pages[-1]
+        assert "/dashboard" in frame.url, f"Expected '/dashboard' in URL, got: {frame.url}"
+        elem = frame.locator('xpath=/html/body/div[1]/aside/nav/a/svg').nth(0)
+        visible = await elem.is_visible()
+        assert visible, "Sidebar Items SVG is not visible"
+        raise AssertionError("Element 'Items table/list' not present in the provided available elements; cannot verify that selecting a category filter narrows the items list to that category. Task marked as done.")
+        await asyncio.sleep(5)
+
+    finally:
+        if context:
+            await context.close()
+        if browser:
+            await browser.close()
+        if pw:
+            await pw.stop()
+
+asyncio.run(run_test())
+    

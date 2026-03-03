@@ -1,0 +1,30 @@
+[
+  {
+    "projectId": "0df7ff2f-493e-489a-ae59-9e29c0642dd3",
+    "testId": "930bf70f-81b5-4ebb-85de-b1c051c937a2",
+    "userId": "344824d8-c021-70b3-4710-3c9ba7b70d0d",
+    "title": "TC001-post login with valid credentials",
+    "description": "Test the POST /login endpoint with valid email and password to ensure successful authentication and redirection to the dashboard.",
+    "code": "import requests\n\nBASE_URL = \"http://localhost:8000\"\nLOGIN_ENDPOINT = \"/api/login\"\nTIMEOUT = 30\n\n\ndef test_post_login_with_valid_credentials():\n    url = f\"{BASE_URL}{LOGIN_ENDPOINT}\"\n    payload = {\"email\": \"admin@mjmetal.co.id\", \"password\": \"password\"}\n    headers = {\"Content-Type\": \"application/json\"}\n\n    try:\n        response = requests.post(url, json=payload, headers=headers, timeout=TIMEOUT)\n    except requests.RequestException as e:\n        assert False, f\"Request to {url} failed: {e}\"\n\n    assert response.status_code == 200, f\"Expected HTTP 200 OK, got {response.status_code}\"\n    try:\n        json_data = response.json()\n    except ValueError:\n        assert False, \"Response is not valid JSON\"\n\n    assert \"token\" in json_data, \"Response JSON does not contain 'token' key\"\n    token = json_data[\"token\"]\n    assert isinstance(token, str) and len(token) > 0, \"Token is empty or not a string\"\n\n\ntest_post_login_with_valid_credentials()",
+    "testStatus": "PASSED",
+    "testError": "",
+    "testType": "BACKEND",
+    "createFrom": "mcp",
+    "created": "2026-02-27T07:34:50.544Z",
+    "modified": "2026-02-27T07:35:03.463Z"
+  },
+  {
+    "projectId": "0df7ff2f-493e-489a-ae59-9e29c0642dd3",
+    "testId": "adce0b70-3719-404c-9167-9b336fb74329",
+    "userId": "344824d8-c021-70b3-4710-3c9ba7b70d0d",
+    "title": "TC002-post login with invalid credentials",
+    "description": "Test the POST /login endpoint with invalid email or password to verify that the system returns appropriate validation errors for wrong credentials.",
+    "code": "import requests\n\nBASE_URL = \"http://localhost:8000\"\n\ndef test_post_login_with_invalid_credentials():\n    # Step 1: Obtain Bearer token with valid admin credentials\n    login_url = f\"{BASE_URL}/api/login\"\n    valid_login_payload = {\n        \"email\": \"admin@mjmetal.co.id\",\n        \"password\": \"password\"\n    }\n    try:\n        login_resp = requests.post(login_url, json=valid_login_payload, timeout=30)\n        login_resp.raise_for_status()\n        token = login_resp.json().get(\"token\") or login_resp.json().get(\"access_token\")\n        assert token, \"Failed to obtain token with valid credentials\"\n    except (requests.RequestException, AssertionError) as e:\n        raise RuntimeError(f\"Setup login failed: {e}\")\n\n    headers = {\n        \"Authorization\": f\"Bearer {token}\",\n        \"Content-Type\": \"application/json\",\n        \"Accept\": \"application/json\"\n    }\n\n    # Step 2: Test login with invalid credentials\n    invalid_login_payload = {\n        \"email\": \"wrong@example.com\",\n        \"password\": \"wrongpass\"\n    }\n    try:\n        resp = requests.post(login_url, json=invalid_login_payload, headers=headers, timeout=30)\n    except requests.RequestException as e:\n        raise RuntimeError(f\"Request to /api/login with invalid credentials failed: {e}\")\n\n    # Step 3: Validate response status code and error message\n    # Assuming API returns 401 or 422 for invalid credentials with JSON error message\n    assert resp.status_code in (401, 422), f\"Expected 401 or 422 status code for invalid credentials, got {resp.status_code}\"\n    try:\n        json_data = resp.json()\n    except ValueError:\n        raise AssertionError(\"Response is not JSON\")\n\n    # Check typical error message keys for validation errors or login failure\n    error_present = False\n    error_messages = []\n    if \"errors\" in json_data:\n        error_messages = json_data[\"errors\"]\n        error_present = bool(error_messages)\n    elif \"message\" in json_data:\n        error_messages = [json_data[\"message\"]]\n        error_present = True if json_data[\"message\"] else False\n    elif \"error\" in json_data:\n        error_messages = [json_data[\"error\"]]\n        error_present = True if json_data[\"error\"] else False\n\n    assert error_present, \"Expected error message in response JSON for invalid login\"\n\n\ntest_post_login_with_invalid_credentials()\n",
+    "testStatus": "PASSED",
+    "testError": "",
+    "testType": "BACKEND",
+    "createFrom": "mcp",
+    "created": "2026-02-27T07:34:50.548Z",
+    "modified": "2026-02-27T07:35:23.414Z"
+  }
+]

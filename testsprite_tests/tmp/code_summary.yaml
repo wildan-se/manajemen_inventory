@@ -1,0 +1,262 @@
+version: "2"
+type: backend
+tech_stack:
+  - PHP 8.2
+  - Laravel 12
+  - MySQL
+  - Laravel Sanctum (token-based API auth)
+  - REST JSON API (prefix /api/)
+authentication:
+  type: token
+  login_endpoint: POST /api/login
+  login_body: '{"email": "admin@mjmetal.co.id", "password": "password"}'
+  login_response: '{"token": "<bearer_token>", "user": {...}}'
+  auth_header: 'Authorization: Bearer <token>'
+  note: 'All protected endpoints require Authorization Bearer header. No CSRF token needed.'
+routes:
+  - path: /api/login
+    auth_required: false
+    description: Authenticate and receive Bearer token
+    method: POST
+  - path: /api/categories
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/categories/{id}
+    auth_required: true
+    methods: [PUT, DELETE]
+  - path: /api/units
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/units/{id}
+    auth_required: true
+    methods: [PUT, DELETE]
+  - path: /api/suppliers
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/suppliers/{id}
+    auth_required: true
+    methods: [GET, PUT, DELETE]
+  - path: /api/warehouses
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/warehouses/{id}
+    auth_required: true
+    methods: [GET, PUT, DELETE]
+  - path: /api/items
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/items/{id}
+    auth_required: true
+    methods: [GET, PUT, DELETE]
+  - path: /api/stocks
+    auth_required: true
+    methods: [GET]
+  - path: /api/stock-movements
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/stock-movements/{id}
+    auth_required: true
+    methods: [GET]
+  - path: /api/purchase-orders
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/purchase-orders/{id}
+    auth_required: true
+    methods: [GET]
+  - path: /api/purchase-orders/{id}/approve
+    auth_required: true
+    methods: [POST]
+  - path: /api/purchase-orders/{id}/receive
+    auth_required: true
+    methods: [POST]
+  - path: /api/purchase-orders/{id}/cancel
+    auth_required: true
+    methods: [POST]
+  - path: /api/production-orders
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/production-orders/{id}
+    auth_required: true
+    methods: [GET]
+  - path: /api/production-orders/{id}/start
+    auth_required: true
+    methods: [POST]
+  - path: /api/production-orders/{id}/complete
+    auth_required: true
+    methods: [POST]
+  - path: /api/production-orders/{id}/cancel
+    auth_required: true
+    methods: [POST]
+  - path: /api/stock-opnames
+    auth_required: true
+    methods: [GET, POST]
+  - path: /api/stock-opnames/{id}
+    auth_required: true
+    methods: [GET]
+  - path: /api/stock-opnames/{id}/load-stock
+    auth_required: true
+    methods: [POST]
+  - path: /api/stock-opnames/{id}/save-count
+    auth_required: true
+    methods: [POST]
+  - path: /api/stock-opnames/{id}/complete
+    auth_required: true
+    methods: [POST]
+  - path: /api/stock-opnames/{id}/cancel
+    auth_required: true
+    methods: [POST]
+  - path: /api/reports/stock-summary
+    auth_required: true
+    methods: [GET]
+  - path: /api/reports/low-stock
+    auth_required: true
+    methods: [GET]
+  - path: /api/reports/movement-history
+    auth_required: true
+    methods: [GET]
+  - path: /api/users
+    auth_required: true
+    note: admin role only
+    methods: [GET, POST]
+  - path: /api/users/{id}
+    auth_required: true
+    note: admin role only
+    methods: [GET, PUT, DELETE]
+features:
+  - name: Authentication API
+    description: POST /api/login returns {token, user}. Use Bearer token in Authorization header for all protected endpoints.
+    entry_route: /api/login
+    user_interactions:
+      - POST /api/login with JSON {email, password}
+      - Receive {token, user} response
+      - Use Authorization Bearer token for all subsequent API calls
+    api_calls:
+      - method: POST
+        endpoint: /api/login
+    auth_required: false
+  - name: Category Management API
+    description: CRUD for item categories
+    entry_route: /api/categories
+    user_interactions:
+      - GET /api/categories - list all categories
+      - POST /api/categories with {name, description} - create category
+      - PUT /api/categories/{id} - update category
+      - DELETE /api/categories/{id} - delete category
+    api_calls:
+      - method: GET
+        endpoint: /api/categories
+      - method: POST
+        endpoint: /api/categories
+    auth_required: true
+  - name: Item Management API
+    description: CRUD for inventory items
+    entry_route: /api/items
+    user_interactions:
+      - GET /api/items - list items with pagination
+      - POST /api/items with {code, name, category_id, unit_id, min_stock, max_stock}
+      - GET /api/items/{id} - item detail
+      - PUT /api/items/{id} - update item
+      - DELETE /api/items/{id} - delete item
+    api_calls:
+      - method: POST
+        endpoint: /api/items
+    auth_required: true
+  - name: Supplier Management API
+    description: CRUD for suppliers
+    entry_route: /api/suppliers
+    user_interactions:
+      - GET /api/suppliers - list suppliers
+      - POST /api/suppliers with {code, name, email, phone, address}
+      - PUT /api/suppliers/{id} - update supplier
+      - DELETE /api/suppliers/{id} - delete supplier
+    api_calls:
+      - method: POST
+        endpoint: /api/suppliers
+    auth_required: true
+  - name: Warehouse Management API
+    description: CRUD for warehouses
+    entry_route: /api/warehouses
+    user_interactions:
+      - GET /api/warehouses - list warehouses with locations
+      - POST /api/warehouses with {code, name, address}
+    api_calls:
+      - method: POST
+        endpoint: /api/warehouses
+    auth_required: true
+  - name: Stock Movement API
+    description: Record stock mutations
+    entry_route: /api/stock-movements
+    user_interactions:
+      - POST /api/stock-movements with {type, item_id, quantity, to_warehouse_id or from_warehouse_id}
+      - type values: goods_receipt, material_issue, stock_transfer, stock_adjustment, sales_dispatch, production_output
+    api_calls:
+      - method: POST
+        endpoint: /api/stock-movements
+    auth_required: true
+  - name: Purchase Order Workflow API
+    description: Create PO, approve, receive, cancel
+    entry_route: /api/purchase-orders
+    user_interactions:
+      - POST /api/purchase-orders with {po_number, supplier_id, warehouse_id, expected_date, items[]}
+      - POST /api/purchase-orders/{id}/approve
+      - POST /api/purchase-orders/{id}/receive with {items: [{purchase_order_item_id, received_quantity}]}
+      - POST /api/purchase-orders/{id}/cancel
+    api_calls:
+      - method: POST
+        endpoint: /api/purchase-orders
+    auth_required: true
+  - name: Production Order Workflow API
+    description: Create WO, start, complete, cancel
+    entry_route: /api/production-orders
+    user_interactions:
+      - POST /api/production-orders with {wo_number, title, warehouse_id, planned_start, planned_end, inputs[], outputs[]}
+      - POST /api/production-orders/{id}/start
+      - POST /api/production-orders/{id}/complete
+      - POST /api/production-orders/{id}/cancel
+    api_calls:
+      - method: POST
+        endpoint: /api/production-orders
+    auth_required: true
+  - name: Stock Opname API
+    description: Physical stock count and reconciliation
+    entry_route: /api/stock-opnames
+    user_interactions:
+      - POST /api/stock-opnames with {opname_number, warehouse_id, counted_at}
+      - POST /api/stock-opnames/{id}/load-stock
+      - POST /api/stock-opnames/{id}/save-count with {counts: {item_id: quantity}}
+      - POST /api/stock-opnames/{id}/complete
+      - POST /api/stock-opnames/{id}/cancel
+    api_calls:
+      - method: POST
+        endpoint: /api/stock-opnames
+    auth_required: true
+  - name: Reports API
+    description: Stock summary, low stock, movement history
+    entry_route: /api/reports/stock-summary
+    user_interactions:
+      - GET /api/reports/stock-summary
+      - GET /api/reports/low-stock
+      - GET /api/reports/movement-history?type=goods_receipt&date_from=2026-01-01
+    api_calls:
+      - method: GET
+        endpoint: /api/reports/stock-summary
+    auth_required: true
+  - name: User Management API
+    description: Admin-only CRUD for users
+    entry_route: /api/users
+    user_interactions:
+      - GET /api/users - list users (admin only, returns 403 for non-admin)
+      - POST /api/users with {name, email, password, role}
+      - PUT /api/users/{id}
+      - DELETE /api/users/{id} (cannot delete self)
+    api_calls:
+      - method: GET
+        endpoint: /api/users
+    auth_required: true
+known_limitations:
+  - issue: All endpoints require Bearer token from POST /api/login - no session or CSRF involved
+    location: routes/api.php
+    impact: Tests must login first and pass Authorization Bearer header
+  - issue: User management restricted to admin role - returns 403 for other roles
+    location: routes/api.php
+    impact: Non-admin users get 403 on /api/users endpoints
