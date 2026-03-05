@@ -1,0 +1,32 @@
+# Jangan copy file environment ke dalam container
+# Railway akan inject env vars langsung ke container
+.env
+.env.backup
+.env.production
+
+# Jangan copy dependencies lokal (akan di-install di dalam container)
+node_modules
+vendor.zip
+
+# Git files
+.git
+.gitignore
+
+# Editor & OS files
+.vscode
+.idea
+*.log
+.DS_Store
+Thumbs.db
+
+# Test files
+tests
+testsprite_tests
+playwright.config.js
+phpunit.xml
+
+# Dokumentasi (tidak diperlukan di production)
+*.md
+audit.md
+qa.md
+AI.md
