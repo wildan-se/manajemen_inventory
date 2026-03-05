@@ -48,9 +48,10 @@ COPY ./docker/supervisor/supervisord.conf /etc/supervisord.conf
 # Copy entrypoint script
 COPY ./docker/entrypoint.sh /entrypoint.sh
 
-# PENTING: Konversi dari Windows CRLF ke Unix LF, lalu beri permission eksekusi
-# Ini mencegah error "/bin/sh^M: not found" di Linux
-RUN dos2unix /entrypoint.sh && chmod +x /entrypoint.sh
+# PENTING: Konversi SEMUA script dari Windows CRLF ke Unix LF
+# Ini mencegah error "/bin/sh^M: not found" dan config parsing errors di Linux
+RUN dos2unix /entrypoint.sh /etc/supervisord.conf \
+    && chmod +x /entrypoint.sh
 
 # Expose port default (Railway akan override lewat $PORT env var)
 EXPOSE 8080
