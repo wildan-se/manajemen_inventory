@@ -12,6 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Trust all proxies (Railway + Fastly CDN reverse proxy)
+        // Tanpa ini, asset URL di-generate sebagai http:// → mixed content → CSS/JS tidak load
+        $middleware->trustProxies(at: '*');
+
         // H-04: Security headers diterapkan ke semua web request
         $middleware->web(append: [
             \App\Http\Middleware\SecurityHeaders::class,
@@ -24,3 +28,4 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+
