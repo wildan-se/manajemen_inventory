@@ -47,11 +47,13 @@ class SecurityHeaders
                 'Content-Security-Policy',
                 implode('; ', [
                     "default-src 'self'",
-                    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+                    // jsdelivr.net diizinkan untuk Chart.js CDN
+                    "script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net",
                     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
                     "font-src 'self' fonts.gstatic.com data:",
                     "img-src 'self' data: blob:",
-                    "connect-src 'self'",
+                    // jsdelivr.net diizinkan untuk preconnect/fetch CDN assets
+                    "connect-src 'self' fonts.googleapis.com cdn.jsdelivr.net",
                     "frame-ancestors 'self'",
                     "form-action 'self'",
                 ])
