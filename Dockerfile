@@ -44,8 +44,12 @@ COPY ./docker/nginx/default.conf /etc/nginx/http.d/default.conf
 # Copy konfigurasi Supervisor (Menjalankan Nginx dan PHP-FPM bersamaan di satu container)
 COPY ./docker/supervisor/supervisord.conf /etc/supervisord.conf
 
-# Expose port HTTP
+# Copy entrypoint script dan beri permission eksekusi
+COPY ./docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Expose port (Railway akan override lewat $PORT env var)
 EXPOSE 80
 
-# Jalankan server
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+# Jalankan entrypoint script (setup otomatis + start server)
+CMD ["/entrypoint.sh"]
