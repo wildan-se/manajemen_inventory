@@ -15,7 +15,8 @@ RUN apk add --no-cache \
     npm \
     git \
     supervisor \
-    nginx
+    nginx \
+    dos2unix
 
 # Install ekstensi PHP yang dibutuhkan Laravel
 RUN docker-php-ext-install pdo pdo_mysql gd xml bcmath
@@ -44,12 +45,15 @@ COPY ./docker/nginx/default.conf /etc/nginx/http.d/default.conf
 # Copy konfigurasi Supervisor (Menjalankan Nginx dan PHP-FPM bersamaan di satu container)
 COPY ./docker/supervisor/supervisord.conf /etc/supervisord.conf
 
-# Copy entrypoint script dan beri permission eksekusi
+# Copy entrypoint script
 COPY ./docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
-# Expose port (Railway akan override lewat $PORT env var)
-EXPOSE 80
+# PENTING: Konversi dari Windows CRLF ke Unix LF, lalu beri permission eksekusi
+# Ini mencegah error "/bin/sh^M: not found" di Linux
+RUN dos2unix /entrypoint.sh && chmod +x /entrypoint.sh
+
+# Expose port default (Railway akan override lewat $PORT env var)
+EXPOSE 8080
 
 # Jalankan entrypoint script (setup otomatis + start server)
 CMD ["/entrypoint.sh"]

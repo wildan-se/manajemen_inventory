@@ -6,6 +6,11 @@
 *.md diff=markdown
 *.php diff=php
 
+# Paksa file shell script SELALU pakai Unix LF (penting untuk Docker di Linux)
+*.sh text eol=lf
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
